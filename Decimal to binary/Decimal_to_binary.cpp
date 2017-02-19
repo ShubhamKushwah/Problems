@@ -1,30 +1,30 @@
 #include <iostream>
 #include <cmath>
-
 using namespace std;
 
-int BinaryToDecimal(long long);  /*invoking the function we made.*/
+long long DecimalToBinary(int);
 
 int main()
 {
-    long long n;    /*To store binary number.*/
+    int n;  /*n->decimal, binary->binary number*/
 
-    cout << "Enter a binary number: ";
+    cout << "Enter a decimal number: ";
     cin >> n;
-
-    cout << "Binary number: " << n << ", Decimal equivalent: " << BinaryToDecimal(n);
+    cout << "Decimal: " << n << ", Binary equivalent: " << DecimalToBinary(n) << endl ;
     return 0;
 }
 
-int BinaryToDecimal(long long n)
+long long DecimalToBinary(int n)
 {
-    int decimal = 0, i = 0, remainder;
+    long long binary = 0;
+    int remainder, i = 1, step = 1;
+
     while (n!=0)
     {
-        remainder = n%10;
-        decimal += remainder*pow(2,i);
-        n /= 10;
-        ++i;
+        remainder = n%2;
+        n /= 2;
+        binary += remainder*i;
+        i *= 10;
     }
-    return decimal;
+    return binary;
 }
